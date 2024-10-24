@@ -26,7 +26,7 @@ from .opera import Opera
 # https://www.python.org/dev/peps/pep-0420/#dynamic-path-computation
 # https://packaging.python.org/guides/creating-and-discovering-plugins/#using-namespace-packages
 # https://packaging.python.org/guides/packaging-namespace-packages/
-# https://github.com/seanbreckenridge/reorder_editable
+# https://github.com/purarue/reorder_editable
 
 DEFAULT_BROWSERS: List[Type[Browser]] = [
     Chrome,

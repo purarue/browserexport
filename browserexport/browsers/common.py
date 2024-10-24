@@ -192,7 +192,7 @@ def handle_path(
 Defaulting to {default_behaviour} behaviour...
 
 If you're using a browser/platform this currently doesn't support, please make an issue
-at https://github.com/seanbreckenridge/browserexport/issues/new with information.
+at https://github.com/purarue/browserexport/issues/new with information.
 In the meantime, you can point this directly at a history database using the --path flag""",
             err=True,
         )

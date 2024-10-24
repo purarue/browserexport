@@ -22,7 +22,7 @@ CONTEXT_SETTINGS = {
 # target for python3 -m browserexport and console_script using click
 @click.group(
     context_settings=CONTEXT_SETTINGS,
-    epilog="For more info, see https://github.com/seanbreckenridge/browserexport",
+    epilog="For more info, see https://github.com/purarue/browserexport",
 )
 @click.option("--debug", is_flag=True, default=False, help="Increase log verbosity")
 def cli(debug: bool) -> None:

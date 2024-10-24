@@ -110,7 +110,7 @@ The `--pattern` argument can be used to change the resulting filename for the br
 
 Feel free to create an issue/contribute a [browser](./browserexport/browsers/) file to locate the browser if this doesn't support some browser you use.
 
-Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) logs
+Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/purarue/sqlite_backup) logs
 
 ```
 $ browserexport --debug save -b firefox --to .
@@ -218,7 +218,7 @@ browserexport merge --stream --json ~/data/browsing/*.sqlite | gzip --best > ./h
 browserexport --debug inspect ./history.jsonl.gz
 ```
 
-If you don't care about keeping the raw databases for any other auxiliary info like form, bookmark data, or [from_visit](https://github.com/seanbreckenridge/browserexport/issues/30) info and just want the URL, visit date and metadata, you could use `merge` to periodically merge the bulky `.sqlite` files into a gzipped JSONL dump to reduce storage space, and improve parsing speed:
+If you don't care about keeping the raw databases for any other auxiliary info like form, bookmark data, or [from_visit](https://github.com/purarue/browserexport/issues/30) info and just want the URL, visit date and metadata, you could use `merge` to periodically merge the bulky `.sqlite` files into a gzipped JSONL dump to reduce storage space, and improve parsing speed:
 
 ```bash
 # backup databases
@@ -234,7 +234,7 @@ rm ~/data/browsing/*
 mv /tmp/browsing.jsonl.gz ~/data/browsing
 ```
 
-I do this every couple months with a script [here](https://github.com/seanbreckenridge/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
+I do this every couple months with a script [here](https://github.com/purarue/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
 
 ## Shell Completion
 
@@ -305,7 +305,7 @@ from browserexport.merge import read_and_merge
 read_and_merge(["/path/to/database", "/path/to/second/database", "..."])
 ```
 
-You can also use [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
+You can also use [`sqlite_backup`](https://github.com/purarue/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
 
 ```python
 from browserexport.browsers.all import Firefox
@@ -323,7 +323,7 @@ merged = list(merge_visits([
 ]))
 ```
 
-If this doesn't support a browser and you wish to quickly extend without maintaining a fork (or contributing back to this repo), you can pass a `Browser` implementation (see [browsers/all.py](./browserexport/browsers/all.py) and [browsers/common.py](./browserexport/browsers/common.py) for more info) to `browserexport.parse.read_visits` or programmatically override/add your own browsers as part of the [`browserexport.browsers` namespace package](https://github.com/seanbreckenridge/browserexport/blob/0705629e1dc87fe47d6f731018d26dc3720cf2fe/browserexport/browsers/all.py#L15-L24)
+If this doesn't support a browser and you wish to quickly extend without maintaining a fork (or contributing back to this repo), you can pass a `Browser` implementation (see [browsers/all.py](./browserexport/browsers/all.py) and [browsers/common.py](./browserexport/browsers/common.py) for more info) to `browserexport.parse.read_visits` or programmatically override/add your own browsers as part of the [`browserexport.browsers` namespace package](https://github.com/purarue/browserexport/blob/0705629e1dc87fe47d6f731018d26dc3720cf2fe/browserexport/browsers/all.py#L15-L24)
 
 #### Comparisons with Promnesia
 
@@ -338,7 +338,7 @@ Since [promnesia #375](https://github.com/karlicoss/promnesia/pull/375), `browse
 Clone the repository and [optionally] create a [virtual environment](https://docs.python.org/3/library/venv.html) to do your work in.
 
 ```bash
-git clone https://github.com/seanbreckenridge/browserexport
+git clone https://github.com/purarue/browserexport
 cd ./browserexport
 # create a virtual environment to prevent possible package dependency conflicts
 python -m virtualenv .venv  # python3 -m pip install virtualenv if missing
