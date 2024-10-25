@@ -114,15 +114,15 @@ Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/purarue
 
 ```
 $ browserexport --debug save -b firefox --to .
-[D 220202 10:10:22 common:87] Glob /home/sean/.mozilla/firefox with */places.sqlite (non recursive) matched [PosixPath('/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite')]
-[I 220202 10:10:22 save:18] backing up /home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite to /home/sean/Repos/browserexport/firefox-20220202181022.sqlite
+[D 220202 10:10:22 common:87] Glob /home/username/.mozilla/firefox with */places.sqlite (non recursive) matched [PosixPath('/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite')]
+[I 220202 10:10:22 save:18] backing up /home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite to /home/username/Repos/browserexport/firefox-20220202181022.sqlite
 [D 220202 10:10:22 core:110] Source database files: '['/tmp/tmpcn6gpj1v/places.sqlite', '/tmp/tmpcn6gpj1v/places.sqlite-wal']'
 [D 220202 10:10:22 core:111] Temporary Destination database files: '['/tmp/tmpcn6gpj1v/places.sqlite', '/tmp/tmpcn6gpj1v/places.sqlite-wal']'
-[D 220202 10:10:22 core:64] Copied from '/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite' to '/tmp/tmpcn6gpj1v/places.sqlite' successfully; copied without file changing: True
-[D 220202 10:10:22 core:64] Copied from '/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite-wal' to '/tmp/tmpcn6gpj1v/places.sqlite-wal' successfully; copied without file changing: True
-[D 220202 10:10:22 core:230] Running backup, from '/tmp/tmpcn6gpj1v/places.sqlite' to '/home/sean/Repos/browserexport/firefox-20220202181022.sqlite'
+[D 220202 10:10:22 core:64] Copied from '/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite' to '/tmp/tmpcn6gpj1v/places.sqlite' successfully; copied without file changing: True
+[D 220202 10:10:22 core:64] Copied from '/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite-wal' to '/tmp/tmpcn6gpj1v/places.sqlite-wal' successfully; copied without file changing: True
+[D 220202 10:10:22 core:230] Running backup, from '/tmp/tmpcn6gpj1v/places.sqlite' to '/home/username/Repos/browserexport/firefox-20220202181022.sqlite'
 [D 220202 10:10:22 save:14] Copied 1840 of 1840 database pages...
-[D 220202 10:10:22 core:246] Executing 'wal_checkpoint(TRUNCATE)' on destination '/home/sean/Repos/browserexport/firefox-20220202181022.sqlite'
+[D 220202 10:10:22 core:246] Executing 'wal_checkpoint(TRUNCATE)' on destination '/home/username/Repos/browserexport/firefox-20220202181022.sqlite'
 ```
 
 For Firefox Android [Fenix](https://github.com/mozilla-mobile/fenix/), the database has to be manually backed up (probably from a rooted phone using [`termux`](https://termux.dev/en/)) from `data/data/org.mozilla.fenix/files/places.sqlite`.
@@ -154,11 +154,11 @@ As an example:
 ```
 browserexport --debug merge ~/data/firefox/* ~/data/chrome/*
 [D 210417 21:12:18 merge:38] merging information from 24 sources...
-[D 210417 21:12:18 parse:19] Reading visits from /home/sean/data/firefox/places-20200828223058.sqlite...
+[D 210417 21:12:18 parse:19] Reading visits from /home/username/data/firefox/places-20200828223058.sqlite...
 [D 210417 21:12:18 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 [D 210417 21:12:18 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
 [D 210417 21:12:18 parse:22] Detected as Firefox
-[D 210417 21:12:19 parse:19] Reading visits from /home/sean/data/firefox/places-20201010031025.sqlite...
+[D 210417 21:12:19 parse:19] Reading visits from /home/username/data/firefox/places-20201010031025.sqlite...
 [D 210417 21:12:19 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 ....
 [D 210417 21:12:48 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
