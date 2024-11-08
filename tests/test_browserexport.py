@@ -102,7 +102,7 @@ def test_read_safari(safari: Path) -> None:
     assert v.metadata is not None
     assert (
         v.metadata.title
-        == "album amalgam - https://github.com/seanbreckenridge/albums - Google Sheets"
+        == "album amalgam - https://github.com/purarue/albums - Google Sheets"
     )
     expected = datetime(2021, 4, 18, 1, 3, 45, 293084, tzinfo=timezone.utc)
     assert v.dt == expected
@@ -115,7 +115,7 @@ def test_read_vivaldi(vivaldi: Path) -> None:
     assert v.metadata is not None
     assert (
         v.metadata.title
-        == "GitHub - seanbreckenridge/browserexport: backup and parse browser history databases"
+        == "GitHub - purarue/browserexport: backup and parse browser history databases"
     )
     expected = datetime(2021, 4, 19, 2, 26, 8, 29825, tzinfo=timezone.utc)
     assert v.dt == expected
