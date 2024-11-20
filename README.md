@@ -331,7 +331,7 @@ A lot of the initial queries/ideas here were taken from [promnesia](https://gith
 
 TLDR on promnesia: lets you explore your browsing history in context: where you encountered it, in chat, on Twitter, on Reddit, or just in one of the text files on your computer. This is unlike most modern browsers, where you can only see when you visited the link.
 
-Since [promnesia #375](https://github.com/karlicoss/promnesia/pull/375), `browserexport` is used in [promnesia](https://github.com/karlicoss/promnesia) in the `browser.py` file (to read any of the supported databases here from disk), see [setup](https://github.com/karlicoss/promnesia#setup) and [the browser source quickstart](https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#browser) in the instructions for more
+`browserexport` is now used in [promnesia](https://github.com/karlicoss/promnesia) in the [`browser` source](https://github.com/karlicoss/promnesia/blob/master/src/promnesia/sources/browser.py), see [setup](https://github.com/karlicoss/promnesia#setup) and [the browser source quickstart](https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#browser) in the instructions for more
 
 ## Contributing
 
