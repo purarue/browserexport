@@ -101,7 +101,7 @@ You can use the --profile argument to select one of the profiles/match a particu
 
 
 def handle_glob(bases: Sequence[Path], stem: str, recursive: bool = False) -> Path:
-    glob_itrs: List[Generator[Path, None, None]]
+    glob_itrs: List[Iterator[Path]]
     if recursive:  # bleh, split like this to make mypy happy
         glob_itrs = [base.rglob(stem) for base in bases]
     else:
