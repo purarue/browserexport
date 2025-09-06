@@ -1,0 +1,77 @@
+[project]
+name = "browserexport"
+version = "0.4.3"
+description = "save and merge browser history and metadata from different browsers"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+keywords = [
+  "backup",
+  "brave",
+  "chrome",
+  "chromium",
+  "database",
+  "export",
+  "firefox",
+  "google-chrome",
+  "history",
+  "palemoon",
+  "safari",
+  "vivaldi",
+  "waterfox",
+]
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "click>=8.1",
+  "kompress>=0.1.20231016",
+  "logzero",
+  "sqlite-backup>=0.1.7",
+]
+[[project.authors]]
+name = "purarue"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+browserexport = "browserexport.__main__:cli"
+
+[project.urls]
+Homepage = "https://github.com/purarue/browserexport"
+
+[project.optional-dependencies]
+testing = ["flake8", "mypy", "pytest"]
+
+[tool.mypy]
+pretty = "True"
+show_error_context = "True"
+show_error_codes = "True"
+check_untyped_defs = "True"
+namespace_packages = "True"
+disallow_any_generics = "True"
+disallow_subclassing_any = "True"
+disallow_untyped_calls = "True"
+disallow_untyped_defs = "True"
+disallow_incomplete_defs = "True"
+no_implicit_optional = "True"
+warn_redundant_casts = "True"
+warn_return_any = "True"
+warn_unreachable = "True"
+
+[tool.pytest.ini_options]
+addopts = ["--verbose", "tests"]
+
+[tool.setuptools.packages.find]
+include = ["browserexport", "browserexport.*"]
+exclude = ["tests"]
