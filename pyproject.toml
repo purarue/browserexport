@@ -54,20 +54,20 @@ Homepage = "https://github.com/purarue/browserexport"
 testing = ["flake8", "mypy", "pytest"]
 
 [tool.mypy]
-pretty = "True"
-show_error_context = "True"
-show_error_codes = "True"
-check_untyped_defs = "True"
-namespace_packages = "True"
-disallow_any_generics = "True"
-disallow_subclassing_any = "True"
-disallow_untyped_calls = "True"
-disallow_untyped_defs = "True"
-disallow_incomplete_defs = "True"
-no_implicit_optional = "True"
-warn_redundant_casts = "True"
-warn_return_any = "True"
-warn_unreachable = "True"
+pretty = true
+show_error_context = true
+show_error_codes = true
+check_untyped_defs = true
+namespace_packages = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
 
 [tool.pytest.ini_options]
 addopts = ["--verbose", "tests"]
