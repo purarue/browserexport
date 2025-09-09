@@ -7,13 +7,10 @@ from pathlib import Path
 from functools import lru_cache
 from datetime import datetime, timezone
 from typing import (
-    List,
-    Iterator,
     Optional,
-    Dict,
     Union,
-    Sequence,
 )
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 
 import click
@@ -27,7 +24,7 @@ from ..sqlite import execute_query
 
 @dataclass
 class Schema:
-    cols: List[str]
+    cols: list[str]
     where: str
     order_by: Optional[str] = None
 
@@ -100,12 +97,12 @@ You can use the --profile argument to select one of the profiles/match a particu
 
 
 def handle_glob(bases: Sequence[Path], stem: str, recursive: bool = False) -> Path:
-    glob_itrs: List[Iterator[Path]]
+    glob_itrs: list[Iterator[Path]]
     if recursive:  # bleh, split like this to make mypy happy
         glob_itrs = [base.rglob(stem) for base in bases]
     else:
         glob_itrs = [base.glob(stem) for base in bases]
-    dbs: List[Path] = list(chain(*glob_itrs))
+    dbs: list[Path] = list(chain(*glob_itrs))
     recur_desc = "recursive" if recursive else "non recursive"
     logger.debug(f"Glob {bases} with {stem} ({recur_desc}) matched {dbs}")
     if len(dbs) > 1:
@@ -166,7 +163,7 @@ def windows_appdata_paths(path: str) -> Sequence[PathIsh]:
 
 
 def handle_path(
-    pathmap: Dict[str, PathMapEntry],
+    pathmap: dict[str, PathMapEntry],
     browser_name: str,
     *,
     key: Optional[str] = None,

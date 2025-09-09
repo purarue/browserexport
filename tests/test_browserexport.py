@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterator, Sequence
+from collections.abc import Iterator, Sequence
 import sqlite3
 
 import pytest

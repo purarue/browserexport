@@ -4,7 +4,8 @@ import logging
 import shlex
 import json as jsn
 from contextlib import contextmanager
-from typing import List, Optional, Sequence, Iterator
+from typing import Optional
+from collections.abc import Sequence, Iterator
 
 import click
 
@@ -35,7 +36,7 @@ def cli(debug: bool) -> None:
         setup(logging.DEBUG)
 
 
-browsers_have_save: List[str] = [
+browsers_have_save: list[str] = [
     b.__name__.lower() for b in DEFAULT_BROWSERS if b.has_save
 ]
 
@@ -71,7 +72,7 @@ def _wrap_browserexport_cli_errors() -> Iterator[None]:
         exit(1)
 
 
-def _chunk_list(lst: List[str], n: int) -> Iterator[List[str]]:
+def _chunk_list(lst: list[str], n: int) -> Iterator[list[str]]:
     for i in range(0, len(lst), n):
         yield lst[i : i + n]
 
@@ -82,7 +83,7 @@ def _wrapped_browser_list() -> str:
     list_browsers_per_line = int(os.environ.get("LIST_BROWSERS_PER_LINE", 6))
 
     # split into groups of 6, join each group with ' | '
-    lines_fmted: List[str] = [
+    lines_fmted: list[str] = [
         " | ".join(chunk)
         for chunk in _chunk_list(browsers_have_save, list_browsers_per_line)
     ]
@@ -179,13 +180,13 @@ def save(
         click.echo(ctx.get_help())
 
 
-def _handle_merge(dbs: List[str], *, json: bool, stream: bool) -> None:
+def _handle_merge(dbs: list[str], *, json: bool, stream: bool) -> None:
     from .model import Visit
     from .common import expand_path
     from .merge import merge_visits
     from .parse import read_visits, _read_buf_as_sqlite_db
 
-    visits: List[Iterator[Visit]] = []
+    visits: list[Iterator[Visit]] = []
 
     with _wrap_browserexport_cli_errors():
         for db in dbs:
@@ -221,7 +222,7 @@ def _handle_merge(dbs: List[str], *, json: bool, stream: bool) -> None:
         else:
             from .demo import demo_visit
 
-            vis: List[Visit] = list(ivis)
+            vis: list[Visit] = list(ivis)
             demo_visit(vis)
             header = f"Use {click.style('vis', fg='green')} to access visit data"
 

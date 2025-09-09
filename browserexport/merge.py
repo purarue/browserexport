@@ -3,7 +3,7 @@ Merges multiple history sqlite databases into one
 """
 
 from datetime import datetime
-from typing import Iterator, Iterable, Sequence, Set, Tuple, List
+from collections.abc import Iterator, Iterable, Sequence
 
 from .log import logger
 from .model import Visit
@@ -18,7 +18,7 @@ def read_and_merge(paths: Sequence[PathIsh]) -> Iterator[Visit]:
     and merges them together (removing duplicates)
     """
     pths = [expand_path(p) for p in paths]
-    hst: List[Iterator[Visit]] = list(map(read_visits, pths))
+    hst: list[Iterator[Visit]] = list(map(read_visits, pths))
     yield from merge_visits(hst)
 
 
@@ -28,7 +28,7 @@ def merge_visits(sources: Sequence[Iterable[Visit]]) -> Iterator[Visit]:
     """
     logger.debug(f"merging information from {len(sources)} source(s)...")
     # use combination of URL, visit date and visit type to uniquely identify visits
-    emitted: Set[Tuple[str, datetime]] = set()
+    emitted: set[tuple[str, datetime]] = set()
     duplicates = 0
     for src in sources:
         for vs in src:
@@ -39,5 +39,5 @@ def merge_visits(sources: Sequence[Iterable[Visit]]) -> Iterator[Visit]:
                 continue
             yield vs
             emitted.add(key)
-    logger.debug("Summary: removed {} duplicates...".format(duplicates))
-    logger.info("Summary: returning {} visit entries...".format(len(emitted)))
+    logger.debug(f"Summary: removed {duplicates} duplicates...")
+    logger.info(f"Summary: returning {len(emitted)} visit entries...")

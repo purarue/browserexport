@@ -5,7 +5,7 @@ A namedtuple representaton for the extracted info
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Optional, NamedTuple, Dict, Any
+from typing import NamedTuple, Any
 
 
 Second = int
@@ -17,19 +17,19 @@ class Metadata(NamedTuple):
     partial information from browsers which supply the information
     """
 
-    title: Optional[str] = None
-    description: Optional[str] = None
-    preview_image: Optional[str] = None
-    duration: Optional[Second] = None
+    title: str | None = None
+    description: str | None = None
+    preview_image: str | None = None
+    duration: Second | None = None
 
     @classmethod
     def make(
         cls,
-        title: Optional[str] = None,
-        description: Optional[str] = None,
-        preview_image: Optional[str] = None,
-        duration: Optional[Second] = None,
-    ) -> Optional[Metadata]:
+        title: str | None = None,
+        description: str | None = None,
+        preview_image: str | None = None,
+        duration: Second | None = None,
+    ) -> Metadata | None:
         """
         Alternate constructor; only make the Metadata object if the user
         supplies at least one piece of data
@@ -60,9 +60,9 @@ class Visit(NamedTuple):
     # hmm, does this being optional make it more annoying to consume
     # by other programs? reduces the amount of data that other programs
     # need to consume, so there's a tradeoff...
-    metadata: Optional[Metadata] = None
+    metadata: Metadata | None = None
 
-    def serialize(self) -> Dict[str, Any]:
+    def serialize(self) -> dict[str, Any]:
         return {
             "url": self.url,
             "dt": self.dt.timestamp(),
@@ -70,7 +70,7 @@ class Visit(NamedTuple):
         }
 
     @classmethod
-    def from_dict(cls, d: Dict[str, Any]) -> Visit:
+    def from_dict(cls, d: dict[str, Any]) -> Visit:
         md = d.get("metadata")
         metadata = Metadata.make(**md) if md is not None else None
         return cls(

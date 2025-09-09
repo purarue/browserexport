@@ -3,7 +3,8 @@ import sqlite3
 import tempfile
 import shutil
 from pathlib import Path
-from typing import Iterator, List, Any, Dict, TextIO, Optional, Type, BinaryIO
+from typing import Any, TextIO, Optional, BinaryIO
+from collections.abc import Iterator
 
 from kompress import is_compressed, CPath
 
@@ -15,8 +16,8 @@ from .browsers.common import Browser
 from .browsers.all import DEFAULT_BROWSERS
 
 
-def _read_json_obj(path: TextIO) -> Iterator[Dict[str, Any]]:
-    data: List[Dict[str, Any]]
+def _read_json_obj(path: TextIO) -> Iterator[dict[str, Any]]:
+    data: list[dict[str, Any]]
     try:
         # speedup load using orjson if its installed
         import orjson  # type: ignore[import]
@@ -31,12 +32,12 @@ def _read_json_obj(path: TextIO) -> Iterator[Dict[str, Any]]:
     yield from data
 
 
-def _read_json_file(path: PathIsh) -> Iterator[Dict[str, Any]]:
+def _read_json_file(path: PathIsh) -> Iterator[dict[str, Any]]:
     with expand_path(path).open() as fp:
         yield from _read_json_obj(fp)
 
 
-def _read_json_lines(fp: TextIO) -> Iterator[Dict[str, Any]]:
+def _read_json_lines(fp: TextIO) -> Iterator[dict[str, Any]]:
     try:
         import orjson  # type: ignore[import]
 
@@ -106,12 +107,12 @@ def _read_buf_as_sqlite_db(buf: BinaryIO) -> sqlite3.Connection:
 
 
 def read_visits(
-    path: PathIshOrConn, *, additional_browsers: Optional[List[Type[Browser]]] = None
+    path: PathIshOrConn, *, additional_browsers: Optional[list[type[Browser]]] = None
 ) -> Iterator[Visit]:
     """
     Takes one sqlite database as input and returns 'Visit's
     """
-    browsers: List[Type[Browser]] = additional_browsers or []
+    browsers: list[type[Browser]] = additional_browsers or []
     browsers += DEFAULT_BROWSERS
     logger.info(f"Reading visits from {path}...")
 

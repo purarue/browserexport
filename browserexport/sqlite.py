@@ -1,6 +1,6 @@
 import sqlite3
 
-from typing import Iterator
+from collections.abc import Iterator
 
 from .common import expand_path, PathIshOrConn
 
@@ -11,8 +11,7 @@ def _execute_conn(conn: sqlite3.Connection, query: str) -> Iterator[sqlite3.Row]
     """
     conn.row_factory = sqlite3.Row
     conn.text_factory = lambda b: b.decode(errors="ignore")
-    for row in conn.execute(query):
-        yield row
+    yield from conn.execute(query)
 
 
 def execute_query(path: PathIshOrConn, query: str) -> Iterator[sqlite3.Row]:

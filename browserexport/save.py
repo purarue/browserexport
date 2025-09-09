@@ -5,7 +5,7 @@ import shutil
 import tempfile
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Type, Union
+from typing import Optional, Union
 
 import click
 from sqlite_backup import sqlite_backup
@@ -99,7 +99,7 @@ def _default_pattern(
 
 
 def backup_history(
-    browser: Union[str, Type[Browser]],
+    browser: Union[str, type[Browser]],
     to: PathIsh,
     *,
     profile: str = "*",
@@ -122,7 +122,7 @@ def backup_history(
         path to the backup, or None if printing to stdout
     """
 
-    chosen: Type[Browser]
+    chosen: type[Browser]
     browser_name: str
     if isinstance(browser, str):
         for extr in DEFAULT_BROWSERS:

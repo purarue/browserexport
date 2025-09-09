@@ -1,4 +1,3 @@
-from typing import List, Type
 from .common import Browser
 from .firefox import Firefox
 from .waterfox import Waterfox
@@ -28,7 +27,7 @@ from .opera import Opera
 # https://packaging.python.org/guides/packaging-namespace-packages/
 # https://github.com/purarue/reorder_editable
 
-DEFAULT_BROWSERS: List[Type[Browser]] = [
+DEFAULT_BROWSERS: list[type[Browser]] = [
     Chrome,
     Firefox,
     Opera,
