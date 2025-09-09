@@ -70,7 +70,7 @@ warn_return_any = true
 warn_unreachable = true
 
 [tool.pytest.ini_options]
-addopts = ["--verbose", "tests"]
+addopts = "--verbose tests"
 
 [tool.setuptools.packages.find]
 include = ["browserexport", "browserexport.*"]
