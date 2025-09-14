@@ -234,7 +234,7 @@ rm ~/data/browsing/*
 mv /tmp/browsing.jsonl.gz ~/data/browsing
 ```
 
-I do this every couple months with a script [here](https://github.com/purarue/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
+I [back up my browsers daily](https://github.com/purarue/HPI-personal/blob/master/jobs/all/backup_browser_history.job) and then [merge them together every few days](https://github.com/purarue/bleanser/blob/master/bin/merge-browser-history), synccing the old databases to a harddrive for more long-term storage
 
 ## Shell Completion
 
