@@ -55,7 +55,7 @@ class Browser:
         if " " in cls.detector.strip():
             detector_query = cls.detector
         else:
-            detector_query = f"SELECT * FROM {cls.detector}"
+            detector_query = f"SELECT * FROM {cls.detector} LIMIT 1"
         logger.debug(f"{cls.__name__}: Running detector query '{detector_query}'")
         try:
             list(execute_query(path, detector_query))
