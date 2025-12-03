@@ -3,7 +3,7 @@ import sys
 import sqlite3
 import shutil
 import tempfile
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Union
 
@@ -61,7 +61,11 @@ def _path_backup(
     if str(dest) == "-":
         # use temporary directory as its more windows-friendly
         with tempfile.TemporaryDirectory() as td:
-            tfp = Path(tempfile.mktemp(suffix="-browser-stdin.sqlite", dir=td))
+            tfp = Path(
+                tempfile.NamedTemporaryFile(
+                    suffix="-browser-stdin.sqlite", dir=td, delete=False
+                )
+            )
             _sqlite_backup(srcp, tfp)
             _print_sqlite_db_to_stdout(tfp)
 
@@ -94,7 +98,7 @@ def _default_pattern(
     if pattern is None:
         pattern = (browser_name or "browser") + "-{}" + suffix
     # create pattern to timestamp backup filename
-    now: str = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    now: str = datetime.now(tz=timezone.utc).strftime("%Y%m%d%H%M%S")
     return to_p / pattern.format(now)
 
 
