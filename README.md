@@ -52,6 +52,7 @@ This currently supports:
   - [Edge](https://www.microsoft.com/edge) (and [Dev Channel](https://www.microsoft.com/edge/download/insider))
 - [Safari](https://www.apple.com/safari/)
 - [Palemoon](https://www.palemoon.org/)
+- [qutebrowser](https://qutebrowser.org/)
 
 This can probably extract visits from other Firefox/Chromium-based browsers, but it doesn't know how to locate them to `save` them
 
@@ -71,10 +72,10 @@ Usage: browserexport save [OPTIONS]
   Backs up a current browser database file
 
 Options:
-  -b, --browser
-      [chrome | firefox | opera | safari | brave | waterfox |
-      librewolf | floorp | chromium | vivaldi | palemoon | arc |
-      edge | edgedev]
+  -b, --browser 
+      [chrome | firefox | opera | safari | brave | qutebrowser |
+      waterfox | librewolf | floorp | chromium | vivaldi | palemoon |
+      arc | edge | edgedev]
                                   Browser name to backup history for
   --pattern TEXT                  Pattern for the resulting timestamped filename, should include an
                                   str.format replacement placeholder for the date [default:
