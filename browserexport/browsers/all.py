@@ -13,6 +13,7 @@ from .arc import Arc
 from .edge import Edge
 from .edgedev import EdgeDev
 from .librewolf import Librewolf
+from .qutebrowser import Qutebrowser
 from .floorp import Floorp
 from .opera import Opera
 
@@ -33,6 +34,7 @@ DEFAULT_BROWSERS: list[type[Browser]] = [
     Opera,
     Safari,
     Brave,
+    Qutebrowser,
     Waterfox,
     Librewolf,
     Floorp,
