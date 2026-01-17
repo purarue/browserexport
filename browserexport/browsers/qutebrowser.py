@@ -1,16 +1,43 @@
+from urllib.parse import unquote
+
 from .common import (
     handle_path,
+    datetime,
+    timezone,
     handle_glob,
     Path,
     Paths,
-    # windows_appdata_paths,
+    Metadata,
+    PathIshOrConn,
+    Visit,
+    Schema,
+    execute_query,
+    Iterator,
+    Browser,
 )
 
 
-from .chrome import Chrome
+class Qutebrowser(Browser):
+    detector = "CompletionMetaInfo"
+    schema = Schema(
+        cols=[
+            "H.url",
+            "H.title",
+            "H.atime",
+        ],
+        where="FROM History as H",
+        order_by="H.atime",
+    )
 
+    @classmethod
+    def extract_visits(cls, path: PathIshOrConn) -> Iterator[Visit]:
+        for row in execute_query(path, cls.schema.query):
+            yield Visit(
+                url=unquote(row["url"]),
+                dt=datetime.fromtimestamp(row["atime"], timezone.utc),
+                metadata=Metadata.make(title=row["title"]),
+            )
 
-class Qutebrowser(Chrome):
     @classmethod
     def data_directories(cls) -> Paths:
         return handle_path(
