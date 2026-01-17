@@ -4,7 +4,6 @@ import logging
 import shlex
 import json as jsn
 from contextlib import contextmanager
-from typing import Optional
 from collections.abc import Sequence, Iterator
 
 import click

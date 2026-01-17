@@ -1,4 +1,3 @@
-from typing import Optional
 from .common import (
     BrowserexportError,
     logger,

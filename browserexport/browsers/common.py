@@ -6,10 +6,7 @@ from itertools import chain
 from pathlib import Path
 from functools import lru_cache
 from datetime import datetime, timezone
-from typing import (
-    Optional,
-    Union,
-)
+from typing import Union
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 

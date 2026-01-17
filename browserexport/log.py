@@ -5,8 +5,6 @@ Setup logging for this module
 import os
 import logging
 
-from typing import Optional
-
 from logzero import setup_logger  # type: ignore[import]
 
 DEFAULT_LEVEL = logging.WARNING

@@ -3,7 +3,7 @@ import sqlite3
 import tempfile
 import shutil
 from pathlib import Path
-from typing import Any, TextIO, Optional, BinaryIO
+from typing import Any, TextIO, BinaryIO
 from collections.abc import Iterator
 
 from kompress import is_compressed, CPath

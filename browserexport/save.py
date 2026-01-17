@@ -5,7 +5,6 @@ import shutil
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional, Union
 
 import click
 from sqlite_backup import sqlite_backup
