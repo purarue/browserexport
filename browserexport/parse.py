@@ -87,7 +87,11 @@ def _read_buf_as_sqlite_db(buf: BinaryIO) -> sqlite3.Connection:
     dbout = sqlite3.connect(":memory:")
 
     with tempfile.TemporaryDirectory() as td:
-        tfp = Path(tempfile.mktemp(suffix="-browser-buffer.sqlite", dir=td))
+        tfp = Path(
+            tempfile.NamedTemporaryFile(
+                delete=False, suffix="-browser-buffer.sqlite", dir=td
+            ).name
+        )
         with tfp.open("wb") as tfo:
             logger.debug(f"reading buffer into tempfile {tfp}...")
             shutil.copyfileobj(buf, tfo)

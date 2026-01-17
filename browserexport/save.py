@@ -64,7 +64,7 @@ def _path_backup(
             tfp = Path(
                 tempfile.NamedTemporaryFile(
                     suffix="-browser-stdin.sqlite", dir=td, delete=False
-                )
+                ).name
             )
             _sqlite_backup(srcp, tfp)
             _print_sqlite_db_to_stdout(tfp)
