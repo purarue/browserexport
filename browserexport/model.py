@@ -1,5 +1,5 @@
 """
-A namedtuple representaton for the extracted info
+A namedtuple representation for the extracted info
 """
 
 from __future__ import annotations
