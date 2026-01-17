@@ -111,7 +111,7 @@ def _read_buf_as_sqlite_db(buf: BinaryIO) -> sqlite3.Connection:
 
 
 def read_visits(
-    path: PathIshOrConn, *, additional_browsers: Optional[list[type[Browser]]] = None
+    path: PathIshOrConn, *, additional_browsers: list[type[Browser]] | None = None
 ) -> Iterator[Visit]:
     """
     Takes one sqlite database as input and returns 'Visit's
