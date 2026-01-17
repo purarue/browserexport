@@ -1,4 +1,3 @@
-from typing import Optional
 from .common import (
     BrowserexportError,
     logger,
@@ -32,7 +31,7 @@ class Opera(Chrome):
         # like the typical chromium browsers. While on windows, its in the 'Default' folder like Chrome
         # can try both and see which works
         dd = cls.data_directories()
-        err: Optional[BrowserexportError] = None
+        err: BrowserexportError | None = None
         # the '/' here allows the user to specify a profile name to disambiguate
         # but also makes it so it checks the base path + a subdir
         #

@@ -5,7 +5,6 @@ import shutil
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional, Union
 
 import click
 from sqlite_backup import sqlite_backup
@@ -20,7 +19,7 @@ def _progress(status: str, remaining: int, total: int) -> None:
     logger.debug(f"Copied {total - remaining} of {total} database pages...")
 
 
-def _sqlite_backup(src: PathIsh, dest: Optional[Path]) -> Optional[sqlite3.Connection]:
+def _sqlite_backup(src: PathIsh, dest: Path | None) -> sqlite3.Connection | None:
     logger.info(f"backing up {src} to {dest}")
     return sqlite_backup(
         src,
@@ -49,9 +48,9 @@ def _print_sqlite_db_to_stdout(pth: Path) -> None:
 def _path_backup(
     src: PathIsh,
     dest: PathIsh,
-    browser_name: Optional[str] = None,
-    pattern: Optional[str] = None,
-) -> Optional[Path]:
+    browser_name: str | None = None,
+    pattern: str | None = None,
+) -> Path | None:
     """
     Backup from src to dest. If dest is '-', print to stdout
 
@@ -82,8 +81,8 @@ def _path_backup(
 def _default_pattern(
     src: Path,
     to: PathIsh,
-    browser_name: Optional[str] = None,
-    pattern: Optional[str] = None,
+    browser_name: str | None = None,
+    pattern: str | None = None,
 ) -> Path:
     """
     can pass a pattern with a format replacement field (for the timestamp)
@@ -103,12 +102,12 @@ def _default_pattern(
 
 
 def backup_history(
-    browser: Union[str, type[Browser]],
+    browser: str | type[Browser],
     to: PathIsh,
     *,
     profile: str = "*",
-    pattern: Optional[str] = None,
-) -> Optional[Path]:
+    pattern: str | None = None,
+) -> Path | None:
     """
     browser:
         typically the name of a browser the user provided from the CLI
@@ -140,7 +139,7 @@ def backup_history(
         chosen = browser
         browser_name = chosen.__name__.lower()
     src: Path = chosen.locate_database(profile)
-    dest: Optional[Path] = _path_backup(
+    dest: Path | None = _path_backup(
         src, to, browser_name=browser_name, pattern=pattern
     )
     if str(to) == "-":

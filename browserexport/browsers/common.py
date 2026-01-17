@@ -6,10 +6,8 @@ from itertools import chain
 from pathlib import Path
 from functools import lru_cache
 from datetime import datetime, timezone
-from typing import (
-    Optional,
-    Union,
-)
+from typing import Union
+from typing import Optional  # noqa: F401
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 
@@ -26,7 +24,7 @@ from ..sqlite import execute_query
 class Schema:
     cols: list[str]
     where: str
-    order_by: Optional[str] = None
+    order_by: str | None = None
 
     @property
     def query(self) -> str:
@@ -166,7 +164,7 @@ def handle_path(
     pathmap: dict[str, PathMapEntry],
     browser_name: str,
     *,
-    key: Optional[str] = None,
+    key: str | None = None,
     default_behaviour: str = "linux",
 ) -> Paths:
     """
@@ -181,7 +179,7 @@ def handle_path(
         key = determine_operating_system()
     # use the key provided, or the first item (dicts after python3.7 are ordered)
     # in the pathmap if that doesn't exist
-    maybeloc: Optional[PathMapEntry] = pathmap.get(key)
+    maybeloc: PathMapEntry | None = pathmap.get(key)
     if maybeloc is None:
         click.echo(
             f"""Not sure where {browser_name} history is installed on {key}

@@ -4,7 +4,6 @@ import logging
 import shlex
 import json as jsn
 from contextlib import contextmanager
-from typing import Optional
 from collections.abc import Sequence, Iterator
 
 import click
@@ -145,11 +144,11 @@ LIST_BROWSERS = "LIST_BROWSERS" in os.environ
 @click.pass_context
 def save(
     ctx: click.Context,
-    browser: Optional[str],
+    browser: str | None,
     profile: str,
     to: str,
-    path: Optional[str],
-    pattern: Optional[str],
+    path: str | None,
+    pattern: str | None,
 ) -> None:
     """
     Backs up a current browser database file
