@@ -86,6 +86,15 @@ def test_read_brave(brave: Path) -> None:
     assert vis[0].dt == expected
 
 
+def test_read_qutebrowser(qutebrowser: Path) -> None:
+    vis = list(read_visits(qutebrowser))
+    assert len(vis) == 2
+    assert vis[0].metadata is not None
+    assert vis[0].metadata.title == "DuckDuckGo - Protection. Privacy. Peace of mind."
+    expected = datetime(2025, 12, 31, 8, 13, 23, tzinfo=timezone.utc)
+    assert vis[0].dt == expected
+
+
 def test_read_palemoon(palemoon: Path) -> None:
     vis = list(read_visits(palemoon))
     assert len(vis) == 8
@@ -314,3 +323,8 @@ def firefox_mobile() -> Iterator[Path]:
 @pytest.fixture()
 def firefox_mobile_legacy() -> Iterator[Path]:
     yield _database("firefox_mobile_legacy")
+
+
+@pytest.fixture()
+def qutebrowser() -> Iterator[Path]:
+    yield _database("qutebrowser")
