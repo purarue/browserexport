@@ -1,6 +1,6 @@
 [project]
 name = "browserexport"
-version = "0.4.3"
+version = "0.4.4"
 description = "save and merge browser history and metadata from different browsers"
 readme = "README.md"
 license = "MIT"
