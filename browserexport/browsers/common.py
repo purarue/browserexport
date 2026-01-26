@@ -6,9 +6,7 @@ from itertools import chain
 from pathlib import Path
 from functools import lru_cache
 from datetime import datetime, timezone
-from typing import Union
 from urllib.parse import unquote  # noqa: F401
-from typing import Optional  # noqa: F401
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 
@@ -139,7 +137,7 @@ def determine_operating_system() -> str:
     return sys.platform
 
 
-PathMapEntry = Union[PathIsh, Sequence[PathIsh]]
+PathMapEntry = PathIsh | Sequence[PathIsh]
 
 
 WINDOWS_BASE_ENVVARS = ("%LOCALAPPDATA%", "%APPDATA%")

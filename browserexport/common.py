@@ -1,10 +1,9 @@
-from typing import Union
 from pathlib import Path
 from sqlite3 import Connection
 
-PathIsh = Union[str, Path]
+PathIsh = str | Path
 # a path or a connection to a database
-PathIshOrConn = Union[PathIsh, Connection]
+PathIshOrConn = PathIsh | Connection
 
 
 def expand_path(path: PathIsh) -> Path:

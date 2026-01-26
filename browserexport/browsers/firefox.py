@@ -5,7 +5,6 @@ from .common import (
     Iterator,
     unquote,
     Visit,
-    Optional,
     Metadata,
     PathIshOrConn,
     Browser,
@@ -22,7 +21,7 @@ from .common import (
 T = TypeVar("T")
 
 
-def func_if_some(maybe: Optional[T], func: Callable[[T], T]) -> Optional[T]:
+def func_if_some(maybe: T | None, func: Callable[[T], T]) -> T | None:
     """if 'maybe' is not None, run the specified function"""
     if maybe is not None:
         return func(maybe)
