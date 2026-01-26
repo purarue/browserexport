@@ -72,7 +72,7 @@ Usage: browserexport save [OPTIONS]
   Backs up a current browser database file
 
 Options:
-  -b, --browser 
+  -b, --browser
       [chrome | firefox | opera | safari | brave | qutebrowser |
       waterfox | librewolf | floorp | chromium | vivaldi | palemoon |
       arc | edge | edgedev]

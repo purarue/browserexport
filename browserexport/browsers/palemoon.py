@@ -1,7 +1,6 @@
-from urllib.parse import unquote
-
 from .common import (
     Path,
+    unquote,
     Schema,
     Iterator,
     Visit,

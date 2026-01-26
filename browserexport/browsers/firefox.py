@@ -1,9 +1,9 @@
 from typing import TypeVar
 from collections.abc import Callable
-from urllib.parse import unquote
 
 from .common import (
     Iterator,
+    unquote,
     Visit,
     Optional,
     Metadata,
