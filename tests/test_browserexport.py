@@ -220,6 +220,19 @@ def test_reading_xz_file(xz_file: Path) -> None:
     assert json_vis[0].url == "https://github.com/junegunn/fzf"
 
 
+def test_merge_non_database_file(tmp_path: Path) -> None:
+    from click.testing import CliRunner
+    from browserexport.__main__ import merge
+
+    junk = tmp_path / "not_a_database.txt"
+    junk.write_text("this is not a database", encoding="utf-8")
+    runner = CliRunner()
+    result = runner.invoke(merge, [str(junk), "--json"])
+    assert result.exit_code != 0
+    assert "Traceback" not in result.output
+    assert "didn't match any known schema" in result.output
+
+
 def test_mixed_read(json_dump: Path, firefox: Path) -> None:
     jvis = list(read_visits(json_dump))
     fvisits = list(read_visits(firefox))
