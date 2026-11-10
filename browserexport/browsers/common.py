@@ -58,7 +58,10 @@ class Browser:
         try:
             list(execute_query(path, detector_query))
             return True
-        except sqlite3.OperationalError as sql_err:
+        except sqlite3.DatabaseError as sql_err:
+            # Note: sqlite3.OperationalError is a subclass of
+            # sqlite3.DatabaseError, so this also catches errors like
+            # "file is not a database" raised for non-database files.
             logger.debug(str(sql_err))
             return False
 
